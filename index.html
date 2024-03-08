@@ -1,0 +1,137 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+
+        <style>
+            h1{
+                text-align: center;font-weight: bolder ;
+            }
+        </style>
+    </head>
+    <body>
+
+       <!--- https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}--->
+        <!--https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}-->
+        <center>
+        <h2 style="color: darkorange;width: 100%;;">
+            Find the weather
+        </h2>
+    </center>
+
+        
+        <form style="display: flex;justify-content: center; ;background-repeat: no-repeat;">
+            <input type="text" placeholder="Enter city Name">
+            <br>
+            <br>
+
+            <input type="submit" >
+        </form>
+
+        
+        <script>
+
+
+var d=document.forms;
+            console.log(d[0]);
+
+            
+
+            var h11=document.createElement("h1");
+            document.body.appendChild(h11);
+
+            
+            d[0].addEventListener("submit",function (e){
+
+               e.preventDefault();
+            var p=e.target[0].value;
+            var t='https://api.openweathermap.org/data/2.5/weather?q=';
+            var k='&appid=c6b6db450953ed2759bc597c8b0b94fa';
+            var link=t+p+k;
+                
+
+            fetch(link,{
+                method:"get"
+            }).then((val)=>{
+                return val.json()
+            }).then((val)=>{
+                //temp=parseInt(val.main.temp-273.15);
+                console.log(val.main.temp);
+                temp=parseInt(val.main.temp-273.15);
+                //temp=val.main.temp-273.15;
+
+
+                if(temp<=10){
+                    h11.style.backgroundImage="url(https://www.canr.msu.edu/contentAsset/image/6898d064-63c6-4ab5-9366-b9ce84cfd406/fileAsset/filter/Resize,Jpeg/resize_w/750/jpeg_q/80)";
+                    h11.style.backgroundSize="cover";
+                    h11.style.width= "100%";
+                        h11.style.height= "600px";
+                        h11.style.height= "800px";
+                        h11.style.color="white";
+                }
+                h11.innerHTML=temp+"<sup>0</sup>"+"C";
+
+
+                if(temp>=20 && temp<30){
+                    h11.style.backgroundImage="url(https://www.shutterstock.com/image-photo/cloudy-sky-600nw-593799179.jpg)";
+                    h11.style.backgroundSize="cover";
+                    h11.style.width= "100%";
+                        h11.style.height= "600px";
+                        h11.style.height= "800px";
+                        h11.style.color="skyblue";
+                    }
+                h11.innerHTML=temp+"<sup>0</sup>"+"C";
+
+                if(temp>=30 && temp<=35){
+                    h11.style.backgroundImage="url(https://www.shutterstock.com/image-vector/sunny-background-blue-sky-white-260nw-528385534.jpg)";
+                    h11.style.backgroundSize="cover";
+                    h11.style.width= "100%";
+                        h11.style.height= "600px";
+                        h11.style.height= "800px";
+                        h11.style.color="orange";
+                }
+                h11.innerHTML=temp+"<sup>0</sup>"+"C";
+
+                if(temp>35 ){
+                    h11.style.backgroundImage="url(https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=612x612&w=0&k=20&c=MGd2-v42lNF7Ie6TtsYoKnohdCfOPFSPQt5XOz4uOy4=)";
+                    h11.style.backgroundSize="cover";
+                    h11.style.width= "100%";
+                        h11.style.height= "600px";
+                        h11.style.height= "800px";
+                        h11.style.color="Red";
+                }
+                h11.innerHTML=temp+"<sup>0</sup>"+"C";
+
+                
+
+
+            })
+        })
+        
+
+
+
+
+            /*fetch("https://api.openweathermap.org/data/2.5/weather?q=Hyderabad&appid=641ae6363e1b1cce6b33bec1bc551c81",{
+                method:"get"
+            }).then((val)=>{
+                return val.json()
+            }).then((val)=>{
+                console.log(val.main.temp);
+                document.write(val.main.temp);
+
+            })*/
+
+
+        
+
+
+
+
+
+        </script>
+            
+    </body>
+</html>
+    
